@@ -1,15 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about container py-5 text-center">
+    <h1 class="section-title">About Me</h1>
+    <p>This is a separate about page. You can add more detailed information here if needed.</p>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+<style scoped>
+/* Specific styles for AboutView.vue if distinct from HomeView sections */
+.about {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
