@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { fetchSkillsData } from '../services/api.js'; // Import fungsi fetch
+import { fetchSkillsData } from '../services/api.js';
 
 const skillsData = ref({});
 
@@ -19,7 +19,8 @@ onMounted(async () => {
       <div class="card-body">
         <ul class="list-group list-group-flush">
           <li v-for="(skills, category) in skillsData" :key="category" class="list-group-item">
-            <strong>{{ category }}:</strong> {{ skills.join(', ') }}
+            <strong>{{ category }}:</strong>
+            {{ skills.map(skill => skill.name).join(', ') }}
           </li>
           <li v-if="Object.keys(skillsData).length === 0" class="list-group-item text-muted">
             Tidak ada data skill.
