@@ -1,15 +1,29 @@
+<script setup>
+import { ref, onMounted } from 'vue';
+import { fetchSkillsData } from '../services/api.js'; // Import fungsi fetch
+
+const skillsData = ref({});
+
+onMounted(async () => {
+  const data = await fetchSkillsData();
+  if (data) {
+    skillsData.value = data;
+  }
+});
+</script>
+
 <template>
   <section class="fade-in">
     <h3 class="section-title">Skill</h3>
     <div class="card shadow-sm">
       <div class="card-body">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Bahasa Pemrograman:</strong> JavaScript</li>
-          <li class="list-group-item"><strong>Frontend Frameworks:</strong> Vue.js</li>
-          <li class="list-group-item"><strong>Styling:</strong> Bootstrap, CSS3, HTML5</li>
-          <li class="list-group-item"><strong>Version Control:</strong> Git, GitHub</li>
-          <li class="list-group-item"><strong>Tools:</strong> Visual Studio Code</li>
-          <li class="list-group-item"><strong>Skill Tambahan:</strong> Desain UI/UX, Responsive Web Design</li>
+          <li v-for="(skills, category) in skillsData" :key="category" class="list-group-item">
+            <strong>{{ category }}:</strong> {{ skills.join(', ') }}
+          </li>
+          <li v-if="Object.keys(skillsData).length === 0" class="list-group-item text-muted">
+            Tidak ada data skill.
+          </li>
         </ul>
       </div>
     </div>
