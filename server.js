@@ -561,14 +561,14 @@ app.delete('/api/contact/:id', authMiddleware, async (req, res) => {
   }
 });
 
-// Serve static files from the Vue.js dist folder in production
-//if (process.env.NODE_ENV === 'production') {
-//  app.use(express.static(path.join(__dirname, 'dist')));
+ //Serve static files from the Vue.js dist folder in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'dist')));
 
-//  app.get('*', (req, res) => {
-//    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-//  });
-//}
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+  });
+}
 
 // Start the server
 app.listen(port, () => {
