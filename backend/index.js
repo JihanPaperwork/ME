@@ -39,6 +39,15 @@ const pool = new Pool({
 // Test database connection
 pool.connect((err, client, release) => {
   if (err) {
+    // Tambahkan detail error untuk debugging
+    console.error('ERROR CONNECTING TO DATABASE:', err.message);
+    console.error('DB Config:', {
+      user: process.env.DB_USER,
+      host: process.env.DB_HOST,
+      database: process.env.DB_DATABASE,
+      port: process.env.DB_PORT,
+      // Jangan tampilkan password di log
+    });
     return console.error('Error acquiring client', err.stack);
   }
   console.log('Connected to the PostgreSQL database!');
