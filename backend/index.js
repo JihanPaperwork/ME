@@ -1,4 +1,4 @@
-// server.js
+// index.js (formerly server.js)
 import express from 'express';
 import pkg from 'pg';
 import dotenv from 'dotenv';
@@ -7,7 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import authMiddleware from './middleware/authMiddleware.js';
+import authMiddleware from './middleware/authMiddleware.js'; // Path relatif ke middleware
 
 // Load environment variables
 dotenv.config();
@@ -560,15 +560,6 @@ app.delete('/api/contact/:id', authMiddleware, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-
- //Serve static files from the Vue.js dist folder in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'dist')));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-  });
-}
 
 // Start the server
 app.listen(port, () => {
