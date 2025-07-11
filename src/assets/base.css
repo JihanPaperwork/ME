@@ -1,0 +1,65 @@
+/* Custom Color Palette */
+:root {
+  --color-primary: #007bff; /* Bootstrap primary blue */
+  --color-secondary: #e2eafc; /* Off-white / light blue-gray */
+  --color-text-light: #333;
+  --color-text-dark: #eee;
+  --color-background-light: #f8f9fa;
+  --color-background-dark: #212529;
+
+  /* Semantic colors based on custom palette */
+  --color-background: var(--color-background-light);
+  --color-background-soft: #f1f3f5;
+  --color-background-mute: #e9ecef;
+
+  --color-border: #dee2e6;
+  --color-border-hover: #adb5bd;
+
+  --color-heading: var(--color-primary);
+  --color-text: var(--color-text-light);
+
+  --section-gap: 60px;
+}
+
+/* Dark Mode specific variables */
+html[data-bs-theme="dark"] {
+  --color-background: var(--color-background-dark);
+  --color-background-soft: #2c3034;
+  --color-background-mute: #343a40;
+
+  --color-border: #495057;
+  --color-border-hover: #6c757d;
+
+  --color-heading: #6aafff; /* Lighter blue for dark mode headings */
+  --color-text: var(--color-text-dark);
+}
+
+/* General styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
